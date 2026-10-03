@@ -1,0 +1,4 @@
+# Orange glass: the Blender sphere's glass, tinted
+ball hidden
+material tint glass #ff8a1f ior=1.46 reflect=1 rough=0.015 opacity=0
+mesh glass_sphere.glb size=96 at=0,0,-48 material=tint

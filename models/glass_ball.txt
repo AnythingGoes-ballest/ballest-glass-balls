@@ -1,0 +1,5 @@
+# Blender glass sphere (Glass Sphere.blend): Transmission 1, IOR 1.46, roughness 0.015.
+# It is the whole ball: 96 cm across (the ball is 95), centred on the ball (a mesh stands on "at": its radius below
+# the centre), and the game's own clear ball is hidden so it does not show inside it.
+ball hidden
+mesh glass_sphere.glb size=96 at=0,0,-48

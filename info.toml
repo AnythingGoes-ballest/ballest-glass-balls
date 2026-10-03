@@ -1,0 +1,11 @@
+[meta]
+name = "Glass Balls"
+version = "0.1.0"
+author = "AnythingGoes"
+description = "Real glass balls, clear or in 10 colours: see-through, bending the track behind them, with live reflections of the track around you."
+min_host = "0.23.2"
+dependencies = ["cosmetic-kit"]
+
+[script]
+files = ["main.as"]
+assets = ["preview.png", "previews/*.png", "models/*.txt", "models/*.glb"]

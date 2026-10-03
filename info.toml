@@ -1,6 +1,6 @@
 [meta]
 name = "Glass Balls"
-version = "0.1.0"
+version = "0.1.1"
 author = "AnythingGoes"
 description = "Real glass balls, clear or in 10 colours: see-through, bending the track behind them, with live reflections of the track around you."
 min_host = "0.23.2"

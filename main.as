@@ -3,20 +3,24 @@
 
 import bool AddBall(const string &in, const string &in, const string &in, const string &in, const string &in) from "cosmetic-kit";
 
+// The clear ball, then the tinted ones: the same sphere, its glass coloured (smoke is a little cloudier, so its grey
+// shows). Each one loads the sphere, about 10 ms (measured), so they're added one a frame: all at once went over the
+// plugin's 50 ms budget and the plugin was stopped before the last ones.
+const array<string> kColours = {"red", "orange", "yellow", "green", "cyan", "blue", "purple", "pink", "gold", "smoke"};
+int added = -1;
+
 void Main()
 {
     string f = Plugins::Folder();
-    // No texture (""): the game's own ball stays clear glass, inside the Blender sphere.
+    // No texture (""): the game's own ball is hidden by the model file (ball hidden), the sphere is the whole ball.
     AddBall("glass-balls.glass", "glass ball", "", f + "preview.png", f + "models/glass_ball.txt");
-    // Tinted glass: the same sphere, its glass coloured (smoke is a little cloudier, so its grey shows).
-    AddBall("glass-balls.red", "red glass ball", "", f + "previews/red.png", f + "models/glass_red.txt");
-    AddBall("glass-balls.orange", "orange glass ball", "", f + "previews/orange.png", f + "models/glass_orange.txt");
-    AddBall("glass-balls.yellow", "yellow glass ball", "", f + "previews/yellow.png", f + "models/glass_yellow.txt");
-    AddBall("glass-balls.green", "green glass ball", "", f + "previews/green.png", f + "models/glass_green.txt");
-    AddBall("glass-balls.cyan", "cyan glass ball", "", f + "previews/cyan.png", f + "models/glass_cyan.txt");
-    AddBall("glass-balls.blue", "blue glass ball", "", f + "previews/blue.png", f + "models/glass_blue.txt");
-    AddBall("glass-balls.purple", "purple glass ball", "", f + "previews/purple.png", f + "models/glass_purple.txt");
-    AddBall("glass-balls.pink", "pink glass ball", "", f + "previews/pink.png", f + "models/glass_pink.txt");
-    AddBall("glass-balls.gold", "gold glass ball", "", f + "previews/gold.png", f + "models/glass_gold.txt");
-    AddBall("glass-balls.smoke", "smoke glass ball", "", f + "previews/smoke.png", f + "models/glass_smoke.txt");
+    added = 0;
+}
+
+void Update(float dt)
+{
+    if (added < 0 || added >= int(kColours.length())) return;
+    string f = Plugins::Folder();
+    string c = kColours[added++];
+    AddBall("glass-balls." + c, c + " glass ball", "", f + "previews/" + c + ".png", f + "models/glass_" + c + ".txt");
 }
